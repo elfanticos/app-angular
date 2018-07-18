@@ -1,0 +1,50 @@
+<div *ngIf="crear">
+  <table border="1">
+    <thead>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Correo</th>
+      <th>Edad</th>
+      <th>Acciones</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let persona of personas; let i = index;">
+        <td>{{i}}</td>
+        <td>{{persona.nombre}}</td>
+        <td>{{persona.apellido}}</td>
+        <td>{{persona.correo}}</td>
+        <td>{{persona.edad}}</td>
+        <td>
+          <button (click)="editarPersona(i)">Editar</button>
+          <button (click)="eliminarPersona(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="crearPer=true; editar=false; crear=false">Crear</button>
+</div>
+<div *ngIf="editar">
+  <div>
+    <label>Nombre</label>
+    <input type="text" name="nombre" [(ngModel)]="nombre">
+    <label for="apellido">Apellido</label>
+    <input type="text" name="apellidos" [(ngModel)]="apellidos">
+    <br>
+    <br>
+    <button (click)="editarRegistro()" type="button">Editar</button>
+    <button (click)="regresar()" type="button">Regresar</button>
+  </div>
+</div>
+<div *ngIf="crearPer">
+  <div>
+    <label>Nombre</label>
+    <input type="text" name="nombre" [(ngModel)]="nombre">
+    <label for="apellido">Apellido</label>
+    <input type="text" name="apellidos" [(ngModel)]="apellidos">
+    <br>
+    <br>
+    <button (click)="crearPersona()" type="button">Crear</button>
+    <button (click)="regresar()" type="button">Regresar</button>
+  </div>
+</div>
